@@ -48,15 +48,6 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
 				controller : 'PageNotFoundController'
 			}
 		}
-	}).state('access-denied', {
-		parent : 'nav',
-		url : '/access-denied',
-		views : {
-			'content@' : {
-				templateUrl : 'app/views/access-denied.html',
-				controller : 'AccessDeniedController'
-			}
-		}
 	}).state('register', {
 		parent : 'nav',
 		url : '/register',
