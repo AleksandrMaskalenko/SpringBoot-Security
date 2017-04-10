@@ -1,0 +1,33 @@
+<div>
+
+<h1 class="text-center">Add song</h1>
+
+<div>
+
+    <table class="table">
+
+        <tr>
+            <th>Name</th>
+            <th><input type="text" data-ng-model="nameR"/></th>
+        </tr>
+        <tr>
+            <th>Author</th>
+            <th><input type="text" data-ng-model="authorR"/></th>
+        </tr>
+        <tr>
+            <th>Duration</th>
+            <th><input type="text" data-ng-model="durationR"/></th>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <th><input type="text" data-ng-model="dateR"/></th>
+        </tr>
+
+    </table>
+</div>
+<div class="pull-right">
+    <button data-ng-click="addSong()" class="btn btn-default">Add Song</button>
+    <a data-ng-click="loadData()" data-ui-sref="address" class="btn btn-default" role="button">Back</a>
+</div>
+
+</div>

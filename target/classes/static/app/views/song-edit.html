@@ -1,0 +1,39 @@
+<div>
+
+    <h1 class="text-center">Song Edit</h1>
+
+    <div >
+
+        <table class="table table-bordred table-striped">
+            <thead>
+            <tr>
+
+                <th>Name</th>
+                <th>Author</th>
+                <th>Duration</th>
+                <th>Date</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+
+                <td><input type="text" data-ng-model="name"/></td>
+                <td><input type="text" data-ng-model="author"/></td>
+                <td><input type="text" data-ng-model="duration"/></td>
+                <td><input type="text" data-ng-model="date"/></td>
+
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="pull-right">
+        <button data-ng-click="updateSong()" class="btn btn-default">Update song</button>
+        <a data-ng-click="loadData()" data-ui-sref="address" class="btn btn-default" role="button">Back</a>
+    </div>
+
+
+</div>
