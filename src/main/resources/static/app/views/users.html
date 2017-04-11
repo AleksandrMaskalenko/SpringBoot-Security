@@ -49,10 +49,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				Users
-				<button type="button" class="btn btn-default btn-sm"
-						data-ng-click="initAddUser()">
-					<span class="glyphicon glyphicon-plus"></span> New User
-				</button>
+				<!--<button type="button" class="btn btn-default btn-sm"-->
+						<!--data-ng-click="initAddUser()">-->
+					<!--<span class="glyphicon glyphicon-plus"></span> New User-->
+				<!--</button>-->
 			</div>
 			<div class="panel-body">
 
@@ -74,12 +74,12 @@
 							<td>{{user.name}}</td>
 							<td>{{user.username}}</td>
 							<td>{{user.role}}</td>
-							<td><button type="button" class="btn btn-default btn-sm"
+							<td><button type="button" class="btn btn-warning btn-sm"
 										data-ng-click="initEdit(user)">
 									<span class="glyphicon glyphicon-edit"></span>
 								</button></td>
 							<td>
-								<button type="button" class="btn btn-default btn-sm"
+								<button type="button" class="btn btn-danger btn-sm"
 										data-ng-click="deleteUser(user)">
 									<span class="glyphicon glyphicon-trash"></span>
 								</button>

@@ -4,33 +4,27 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "song")
 public class Song {
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "song_name")
     private String name;
-
-    @Column(name = "song_author")
     private String author;
-
-    @Column(name = "song_duration")
     private String duration;
-
-    @Column(name = "song_date")
     private String date;
+    private String album;
+    private byte[] image;
 
     public Song() {
     }
 
-    public Song(String name, String author, String duration, String date) {
+    public Song(String name, String author, String duration, String date, String album, byte[] image) {
         this.name = name;
         this.author = author;
         this.duration = duration;
         this.date = date;
+        this.album = album;
+        this.image = image;
     }
 
     public int getId() {
@@ -73,4 +67,19 @@ public class Song {
         this.date = date;
     }
 
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 }

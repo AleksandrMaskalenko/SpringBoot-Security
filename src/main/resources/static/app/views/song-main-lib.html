@@ -22,7 +22,8 @@
             </thead>
 
             <tbody>
-            <tr data-ng-repeat="song in songs" class='clickable-row' data-ui-sref="edit" data-ng-click="editSong(song)">
+            <!--class='clickable-row' data-ui-sref="edit" data-ng-click="songDetails(song)"-->
+            <tr data-ng-repeat="song in songs" >
 
                 <td><a data-ui-sref="details" data-ng-click="songDetails(song)">{{song.name}}</a></td>
                 <td>{{song.author}}</td>
@@ -41,3 +42,5 @@
     </div>
 
 </div>
+
+

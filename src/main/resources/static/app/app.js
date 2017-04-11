@@ -8,11 +8,12 @@ angular.module('myApp', [ 'ui.router' ])
 
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
 
-		if (!AuthService.user  ) {
-            $state.go('login');
-            event.preventDefault();
-
-		}
+        if (!AuthService.user) {
+            if (toState.name != 'login' && toState.name != 'register') {
+                event.preventDefault();
+                $state.go('login');
+            }
+        }
 
 	});
 });

@@ -24,16 +24,18 @@ angular.module('myApp')
         $rootScope.songAuthor = song.author;
         $rootScope.songDuration = song.duration;
         $rootScope.songDate = song.date;
+        $rootScope.songAlbum = song.album;
 
     };
 
     $rootScope.addSong = function () {
 
         var songObj = {
-            name: $scope.nameR,
-            author: $scope.authorR,
-            duration: $scope.durationR,
-            date: $scope.dateR
+            name: $scope.nameAdd,
+            author: $scope.authorAdd,
+            duration: $scope.durationAdd,
+            date: $scope.dateAdd,
+            album: $scope.albumAdd
         };
 
         $http.post('http://localhost:8080/song/add', songObj);
