@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c72c74f-73ca-4a4a-9896-8683c2ec191f" name="Default" comment="v2.1">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/database.sql" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/data.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/data.sql" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/springboot/songlibrary/controller/SongController.class" afterPath="$PROJECT_DIR$/target/classes/com/springboot/songlibrary/controller/SongController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/springboot/songlibrary/model/Song.class" afterPath="$PROJECT_DIR$/target/classes/com/springboot/songlibrary/model/Song.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/4dc765ac-e948-4c78-bc2c-421fbb9c76b8.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/4dc765ac-e948-4c78-bc2c-421fbb9c76b8.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/songlibrari-crud-security.iml" afterPath="$PROJECT_DIR$/songlibrari-crud-security.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/springboot/songlibrary/controller/SongController.java" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/songlibrary/controller/SongController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/springboot/songlibrary/model/Song.java" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/songlibrary/model/Song.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/app/app.js" afterPath="$PROJECT_DIR$/src/main/resources/static/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/app/controllers/song-controller.js" afterPath="$PROJECT_DIR$/src/main/resources/static/app/controllers/song-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/app/views/nav.html" afterPath="$PROJECT_DIR$/src/main/resources/static/app/views/nav.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/app/views/song-add.html" afterPath="$PROJECT_DIR$/src/main/resources/static/app/views/song-add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/app/views/song-details.html" afterPath="$PROJECT_DIR$/src/main/resources/static/app/views/song-details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/app/views/song-main-lib.html" afterPath="$PROJECT_DIR$/src/main/resources/static/app/views/song-main-lib.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/app/views/users.html" afterPath="$PROJECT_DIR$/src/main/resources/static/app/views/users.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/app/app.js" afterPath="$PROJECT_DIR$/target/classes/static/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/app/controllers/song-controller.js" afterPath="$PROJECT_DIR$/target/classes/static/app/controllers/song-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/app/views/nav.html" afterPath="$PROJECT_DIR$/target/classes/static/app/views/nav.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/app/views/song-add.html" afterPath="$PROJECT_DIR$/target/classes/static/app/views/song-add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/app/views/song-details.html" afterPath="$PROJECT_DIR$/target/classes/static/app/views/song-details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/app/views/song-main-lib.html" afterPath="$PROJECT_DIR$/target/classes/static/app/views/song-main-lib.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/app/views/users.html" afterPath="$PROJECT_DIR$/target/classes/static/app/views/users.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1086,12 +1062,12 @@
       <workItem from="1491835065291" duration="299000" />
       <workItem from="1491835456577" duration="472000" />
       <workItem from="1491836311185" duration="8186000" />
-      <workItem from="1491892998290" duration="21932000" />
+      <workItem from="1491892998290" duration="22093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51458000" />
+    <option name="totallyTimeSpent" value="51619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
