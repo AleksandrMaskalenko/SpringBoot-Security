@@ -1,6 +1,8 @@
 package com.springboot.songlibrary.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -14,6 +16,10 @@ public class Song {
     private String date;
     private String album;
     private byte[] image;
+
+//    @ManyToMany
+////    @JoinTable(name = "playlist", joinColumns = {@JoinColumn(name = "song_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
+//    private List<AppUser> appUserList = new ArrayList<>();
 
     public Song() {
     }
@@ -82,4 +88,12 @@ public class Song {
     public void setImage(byte[] image) {
         this.image = image;
     }
+
+//    public List<AppUser> getAppUserList() {
+//        return appUserList;
+//    }
+//
+//    public void setAppUserList(List<AppUser> appUserList) {
+//        this.appUserList = appUserList;
+//    }
 }

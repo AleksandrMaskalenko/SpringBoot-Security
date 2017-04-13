@@ -1,11 +1,6 @@
 <div>
 
-    <h1 class="text-center">Song List</h1>
-
-    <div class="pull-right">
-        <a data-ui-sref="new-song" class="btn btn-default" role="button">Add new song</a>
-
-    </div>
+    <h1 class="text-center">Your playlist</h1>
 
     <div>
 
@@ -17,7 +12,6 @@
                 <th>Duration</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
-                <th>&nbsp;</th>
             </tr>
             </thead>
 
@@ -27,11 +21,8 @@
                 <td><a data-ui-sref="details" data-ng-click="songDetails(song)">{{song.name}}</a></td>
                 <td>{{song.author}}</td>
                 <td>{{song.duration}}</td>
-                <td><button data-ng-click="download(song)" class="btn btn-default">download</button></td>
-
-                <td><a data-ui-sref="edit" data-ng-click="editSong(song)" class="btn btn-info" role="button">edit</a></td>
-
-                <td><button data-ng-click="deleteSong(song)" class="btn btn-danger">delete</button></td>
+                <td><button data-ng-click="" class="btn btn-info">Play</button></td>
+                <td><button data-ng-click="" class="btn btn-info">delete from playlist</button></td>
 
             </tr>
             </tbody>
@@ -41,5 +32,3 @@
     </div>
 
 </div>
-
-

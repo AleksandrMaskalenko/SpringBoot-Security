@@ -25,6 +25,7 @@ angular.module('myApp')
         $rootScope.songDuration = song.duration;
         $rootScope.songDate = song.date;
         $rootScope.songAlbum = song.album;
+        $rootScope.songImage = song.image;
 
     };
 

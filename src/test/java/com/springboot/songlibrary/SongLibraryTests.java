@@ -1,4 +1,4 @@
-package com.techforumist.addressbook;
+package com.springboot.songlibrary;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

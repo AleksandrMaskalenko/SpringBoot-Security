@@ -4,12 +4,19 @@ import com.springboot.songlibrary.service.SongService;
 import com.springboot.songlibrary.model.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
 public class SongController {
+
+    private static byte[] bytes;
 
     @Autowired
     private SongService songService;
@@ -26,6 +33,9 @@ public class SongController {
 
     @RequestMapping(value = "/song/add", method = RequestMethod.POST)
     public void addSong(@RequestBody Song song) {
+
+        song.setImage(bytes);
+
         songService.addSong(song);
     }
 
@@ -37,6 +47,17 @@ public class SongController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
     public void updateSong(@RequestBody Song song, @PathVariable int id) {
         songService.updateSong(song, id);
+    }
+
+
+    @PostMapping("/upload")
+    public void singleFileUpload(@RequestParam("file") MultipartFile file) {
+        try {
+            bytes = file.getBytes();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

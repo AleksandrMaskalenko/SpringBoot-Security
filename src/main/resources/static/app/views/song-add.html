@@ -28,7 +28,12 @@
         </tr>
         <tr>
             <th>Image</th>
-            <th><input type="file" name="file"/></th>
+            <th>
+                <form method="POST" action="/upload" enctype="multipart/form-data">
+                    <input type="file" name="file" class="form-control-file"/>
+                    <input type="submit" value="Upload" />
+                </form>
+            </th>
         </tr>
 
     </table>
