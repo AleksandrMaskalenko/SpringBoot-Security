@@ -3,7 +3,7 @@
     <h1 class="text-center">Song List</h1>
 
     <div class="pull-right">
-        <a data-ui-sref="new-song" class="btn btn-default" role="button">Add new song</a>
+        <a data-ui-sref="new-song" class="btn btn-default" role="button" data-ng-show="user.principal.role =='ADMIN'">+ Add new song</a>
 
     </div>
 
@@ -16,7 +16,8 @@
                 <th>Author</th>
                 <th>Duration</th>
                 <th>&nbsp;</th>
-                <th>&nbsp;</th>
+                <th data-ng-show="user.principal.role =='ADMIN'">&nbsp;</th>
+                <th data-ng-show="user.principal.role =='ADMIN'">&nbsp;</th>
                 <th>&nbsp;</th>
             </tr>
             </thead>
@@ -29,9 +30,11 @@
                 <td>{{song.duration}}</td>
                 <td><button data-ng-click="download(song)" class="btn btn-default">download</button></td>
 
-                <td><a data-ui-sref="edit" data-ng-click="editSong(song)" class="btn btn-info" role="button">edit</a></td>
+                <td data-ng-show="user.principal.role =='ADMIN'"><a data-ui-sref="edit" data-ng-click="editSong(song)" class="btn btn-info" role="button">edit</a></td>
 
-                <td><button data-ng-click="deleteSong(song)" class="btn btn-danger">delete</button></td>
+                <td data-ng-show="user.principal.role =='ADMIN'"><button data-ng-click="deleteSong(song)" class="btn btn-danger">delete</button></td>
+
+                <td><button data-ng-click="addSongPlaylist(song)" class="btn btn-default">Add song to playlist</button></td>
 
             </tr>
             </tbody>

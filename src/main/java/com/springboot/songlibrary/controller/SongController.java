@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 public class SongController {
 
-    private static byte[] bytes;
+//    private static byte[] bytes;
 
     @Autowired
     private SongService songService;
@@ -34,7 +34,13 @@ public class SongController {
     @RequestMapping(value = "/song/add", method = RequestMethod.POST)
     public void addSong(@RequestBody Song song) {
 
-        song.setImage(bytes);
+//        song.setImage(bytes);
+
+        songService.addSong(song);
+    }
+
+    @RequestMapping(value = "/song/update", method = RequestMethod.POST)
+    public void updateSong(@RequestBody Song song) {
 
         songService.addSong(song);
     }
@@ -49,15 +55,28 @@ public class SongController {
         songService.updateSong(song, id);
     }
 
+//    @PostMapping("/upload")
+//    public void singleFileUpload(@RequestParam("file") MultipartFile file) {
+//        try {
+//            bytes = file.getBytes();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    @PostMapping("/upload")
-    public void singleFileUpload(@RequestParam("file") MultipartFile file) {
-        try {
-            bytes = file.getBytes();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @RequestMapping("/playlist/{id}")
+    public List<Song> loadPlaylist(@PathVariable Long id) {
+        return songService.playlist(id);
     }
 
+    @RequestMapping(value = "/playlist/add/{id}", method = RequestMethod.POST)
+    public void addSongPlaylist(@PathVariable int songId) {
+        songService.addSongPlaylist(songId);
+    }
+
+    @RequestMapping(value = "/playlist/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteSongFromPlaylist(@PathVariable int id) {
+        songService.deleteSongFromPlaylist(id);
+    }
 }

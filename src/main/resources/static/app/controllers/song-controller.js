@@ -1,6 +1,8 @@
 angular.module('myApp')
 
-.controller('SongsController', function ($scope, $http, $rootScope) {
+.controller('SongsController', function ($scope, $http, $rootScope, AuthService) {
+
+    $scope.user = AuthService.user;
 
     $scope.loadData = function () {
         $http.get('http://localhost:8080/songs').then(function (response) {

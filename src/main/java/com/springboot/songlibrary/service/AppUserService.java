@@ -13,12 +13,11 @@ import com.springboot.songlibrary.DAO.AppUserDao;
 public class AppUserService implements UserDetailsService {
 
 	@Autowired
-    AppUserDao appUserDao;
+	private AppUserDao appUserDao;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		AppUser appUser = appUserDao.findOneByUsername(username);
-		return appUser;
+		 return appUserDao.findOneByUsername(username);
 	}
 
 }

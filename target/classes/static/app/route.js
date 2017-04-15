@@ -84,5 +84,14 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
                 controller : 'SongsController'
             }
         }
+    }).state('playlist', {
+        parent : 'nav',
+        url : '/playlist',
+        views : {
+            'content@' : {
+                templateUrl : 'app/views/user-playlist.html',
+                controller : 'PlaylistController'
+            }
+        }
     });
 });

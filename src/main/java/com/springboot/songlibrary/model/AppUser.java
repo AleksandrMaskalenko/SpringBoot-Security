@@ -3,6 +3,7 @@ package com.springboot.songlibrary.model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.*;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -23,9 +24,12 @@ public class AppUser implements UserDetails {
 	private String password;
 	private String role;
 
-//	@ManyToMany
-//	@JoinTable(name = "playlist", joinColumns = {@JoinColumn(name = "id")}, inverseJoinColumns = {@JoinColumn(name = "id")})
-//	private List<Song> songList = new ArrayList<>();
+	@JsonIgnore
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "playlist", joinColumns =
+			@JoinColumn(name = "user_id"), inverseJoinColumns =
+			@JoinColumn(name = "song_id"))
+	private List<Song> songList;
 
 	public Long getId() {
 		return id;
@@ -67,13 +71,13 @@ public class AppUser implements UserDetails {
 		this.role = role;
 	}
 
-//	public List<Song> getSongList() {
-//		return songList;
-//	}
-//
-//	public void setSongList(List<Song> songList) {
-//		this.songList = songList;
-//	}
+	public List<Song> getSongList() {
+		return songList;
+	}
+
+	public void setSongList(List<Song> songList) {
+		this.songList = songList;
+	}
 
 	@JsonIgnore
 	@Override
