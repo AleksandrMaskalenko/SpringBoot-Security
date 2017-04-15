@@ -1,6 +1,6 @@
 package com.springboot.songlibrary.config;
 
-import com.springboot.songlibrary.service.AppUserService;
+import com.springboot.songlibrary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,11 +15,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class WebConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	AppUserService appUserService;
+    UserService userService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(appUserService);
+		auth.userDetailsService(userService);
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package com.springboot.songlibrary.controller;
 
 import java.util.List;
+
+import com.springboot.songlibrary.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,65 +14,64 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.springboot.songlibrary.model.AppUser;
-import com.springboot.songlibrary.DAO.AppUserDao;
+import com.springboot.songlibrary.DAO.UserDao;
 
 
 @RestController
 @RequestMapping(value = "/api")
-public class AppUserRestController {
+public class UserRestController {
 	@Autowired
-	private AppUserDao appUserDao;
+	private UserDao userDao;
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public List<AppUser> users() {
-		return appUserDao.findAll();
+	public List<User> users() {
+		return userDao.findAll();
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-	public ResponseEntity<AppUser> userById(@PathVariable Long id) {
-		AppUser appUser = appUserDao.findOne(id);
-		if (appUser == null) {
-			return new ResponseEntity<AppUser>(HttpStatus.NO_CONTENT);
+	public ResponseEntity<User> userById(@PathVariable Long id) {
+		User user = userDao.findOne(id);
+		if (user == null) {
+			return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 		} else {
-			return new ResponseEntity<AppUser>(appUser, HttpStatus.OK);
+			return new ResponseEntity<User>(user, HttpStatus.OK);
 		}
 	}
 
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<AppUser> deleteUser(@PathVariable Long id) {
-		AppUser appUser = appUserDao.findOne(id);
+	public ResponseEntity<User> deleteUser(@PathVariable Long id) {
+		User user = userDao.findOne(id);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String loggedUsername = auth.getName();
-		if (appUser == null) {
-			return new ResponseEntity<AppUser>(HttpStatus.NO_CONTENT);
-		} else if (appUser.getUsername().equalsIgnoreCase(loggedUsername)) {
+		if (user == null) {
+			return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+		} else if (user.getUsername().equalsIgnoreCase(loggedUsername)) {
 			throw new RuntimeException("You cannot delete your account");
 		} else {
-			appUserDao.delete(appUser);
-			return new ResponseEntity<AppUser>(appUser, HttpStatus.OK);
+			userDao.delete(user);
+			return new ResponseEntity<User>(user, HttpStatus.OK);
 		}
 
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/users", method = RequestMethod.POST)
-	public ResponseEntity<AppUser> createUser(@RequestBody AppUser appUser) {
-		if (appUserDao.findOneByUsername(appUser.getUsername()) != null) {
+	public ResponseEntity<User> createUser(@RequestBody User user) {
+		if (userDao.findOneByUsername(user.getUsername()) != null) {
 			throw new RuntimeException("Username already exist");
 		}
-		return new ResponseEntity<AppUser>(appUserDao.save(appUser), HttpStatus.CREATED);
+		return new ResponseEntity<User>(userDao.save(user), HttpStatus.CREATED);
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/users", method = RequestMethod.PUT)
-	public AppUser updateUser(@RequestBody AppUser appUser) {
-		if (appUserDao.findOneByUsername(appUser.getUsername()) != null
-				&& appUserDao.findOneByUsername(appUser.getUsername()).getId() != appUser.getId()) {
+	public User updateUser(@RequestBody User user) {
+		if (userDao.findOneByUsername(user.getUsername()) != null
+				&& userDao.findOneByUsername(user.getUsername()).getId() != user.getId()) {
 			throw new RuntimeException("Username already exist");
 		}
-		return appUserDao.save(appUser);
+		return userDao.save(user);
 	}
 
 }

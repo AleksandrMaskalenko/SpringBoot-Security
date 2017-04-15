@@ -3,9 +3,7 @@ package com.springboot.songlibrary.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -22,7 +20,7 @@ public class Song {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "songList")
-    private List<AppUser> appUserList;
+    private List<User> userList;
 
     public Song() {
     }
@@ -92,11 +90,11 @@ public class Song {
         this.image = image;
     }
 
-    public List<AppUser> getAppUserList() {
-        return appUserList;
+    public List<User> getUserList() {
+        return userList;
     }
 
-    public void setAppUserList(List<AppUser> appUserList) {
-        this.appUserList = appUserList;
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 }

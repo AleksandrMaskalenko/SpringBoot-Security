@@ -1,8 +1,8 @@
 package com.springboot.songlibrary.service;
 
-import com.springboot.songlibrary.DAO.AppUserDao;
+import com.springboot.songlibrary.DAO.UserDao;
 import com.springboot.songlibrary.DAO.SongDao;
-import com.springboot.songlibrary.model.AppUser;
+import com.springboot.songlibrary.model.User;
 import com.springboot.songlibrary.model.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,7 +20,7 @@ public class SongService {
     private SongDao songDao;
 
     @Autowired
-    private AppUserDao appUserDao;
+    private UserDao userDao;
 
     public List<Song> listSong() {
         return songDao.findAll();
@@ -45,43 +45,43 @@ public class SongService {
     public List<Song> playlist(Long userId) {
 
         List<Song> songs = new ArrayList<>();
-        AppUser user = appUserDao.findOne(userId);
+        User user = userDao.findOne(userId);
 
         songs.addAll(user.getSongList());
 
         return songs;
     }
 
-    public void addSongPlaylist(int songId) {
+    public void addSongPlaylist(int id) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String loggedUsername = auth.getName();
-        AppUser user = appUserDao.findOneByUsername(loggedUsername);
+        User user = userDao.findOneByUsername(loggedUsername);
+
         List<Song> songs = new ArrayList<>();
 
-//        AppUser user = appUserDao.findOne(userId);
         songs.addAll(user.getSongList());
-        songs.add(songDao.findOne(songId));
+
+        songs.add(songDao.findOne(id));
 
         user.setSongList(songs);
 
-        appUserDao.save(user);
+        userDao.save(user);
     }
 
     public void deleteSongFromPlaylist(int id) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String loggedUsername = auth.getName();
-        AppUser user = appUserDao.findOneByUsername(loggedUsername);
+        User user = userDao.findOneByUsername(loggedUsername);
+
         List<Song> songs = new ArrayList<>();
 
         songs.addAll(user.getSongList());
 
-        for (Song song: songs) {
-            if(song.getId() == id) {
-                songs.remove(song);
-            }
-        }
+        songs.removeIf(s -> s.getId() == id);
 
-        appUserDao.save(user);
+        user.setSongList(songs);
+
+        userDao.save(user);
     }
 
 }

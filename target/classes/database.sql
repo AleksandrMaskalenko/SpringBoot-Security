@@ -9,7 +9,7 @@ CREATE TABLE song (
 )
   ENGINE = InnoDB;
 
-CREATE TABLE app_user (
+CREATE TABLE user (
   id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   username VARCHAR(255) NOT NULL,
@@ -22,16 +22,16 @@ CREATE TABLE playlist (
   user_id INT NOT NULL,
   song_id INT NOT NULL,
 
-  FOREIGN KEY (user_id) REFERENCES app_user (id),
+  FOREIGN KEY (user_id) REFERENCES user (id),
   FOREIGN KEY (song_id) REFERENCES song (id)
 
 )
   ENGINE = InnoDB;
 
 
-INSERT INTO app_user VALUES (1,'John','admin','admin','ADMIN');
+INSERT INTO user VALUES (1,'John','admin','admin','ADMIN');
 
-INSERT INTO app_user VALUES (2,'Liza','user','user','USER');
+INSERT INTO user VALUES (2,'Liza','user','user','USER');
 
 INSERT INTO song(id,name,author,duration,date,album)
 VALUES (1,'99 Problems','Jay-Z','4:18','2003', 'The Black Album');

@@ -74,4 +74,9 @@ angular.module('myApp')
 
     };
 
+    $scope.addSongPlaylist = function (song) {
+
+        $http.post('http://localhost:8080/playlist/add/' + song.id);
+    };
+
 });

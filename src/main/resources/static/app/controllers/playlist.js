@@ -8,10 +8,7 @@ angular.module('myApp')
             $scope.songs = response.data;
         });
 
-        $scope.addSongPlaylist = function (song) {
 
-            $http.post('http://localhost:8080/playlist/add/' + song.id)
-        };
 
         $scope.deleteSongFromPlaylist = function (song) {
             var idx = $scope.songs.indexOf(song);

@@ -1,7 +1,6 @@
 package com.springboot.songlibrary.DAO;
 
 
-import com.springboot.songlibrary.model.AppUser;
 import com.springboot.songlibrary.model.Song;
 import org.springframework.data.jpa.repository.JpaRepository;
 

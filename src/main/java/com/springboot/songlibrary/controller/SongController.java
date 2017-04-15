@@ -71,8 +71,8 @@ public class SongController {
     }
 
     @RequestMapping(value = "/playlist/add/{id}", method = RequestMethod.POST)
-    public void addSongPlaylist(@PathVariable int songId) {
-        songService.addSongPlaylist(songId);
+    public void addSongPlaylist(@PathVariable int id) {
+        songService.addSongPlaylist(id);
     }
 
     @RequestMapping(value = "/playlist/delete/{id}", method = RequestMethod.DELETE)
