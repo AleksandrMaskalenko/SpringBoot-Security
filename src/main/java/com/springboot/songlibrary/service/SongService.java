@@ -84,4 +84,8 @@ public class SongService {
         userDao.save(user);
     }
 
+    public List<Song> findSongByName(String name) {
+        return songDao.findSongsByName(name);
+    }
+
 }

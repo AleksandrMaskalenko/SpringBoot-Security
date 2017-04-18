@@ -30,7 +30,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
 				controller : 'UsersController'
 			}
 		}
-	}).state('address', {
+	}).state('home', {
 		parent : 'nav',
 		url : '/',
 		views : {

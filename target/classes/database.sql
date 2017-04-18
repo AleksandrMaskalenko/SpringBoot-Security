@@ -48,6 +48,12 @@ VALUES (4,'I''m Not Famous','AJR','3:43','2016', 'What Everyone''s Thinking');
 INSERT INTO song(id,name,author,duration,date,album)
 VALUES (5,'“El Chapo”','Skrillex','3:40','2015', 'The Documentary 2.5');
 
+INSERT INTO song(id,name,author,duration,date,album)
+VALUES (6,'Weak','AJR','3:48','2016', 'What Everyone''s Thinking');
+
+INSERT INTO song(id,name,author,duration,date,album)
+VALUES (7,'Weak','AJR','3:48','2016', 'What Everyone''s Thinking');
+
 
 INSERT INTO playlist VALUES (2, 1);
 INSERT INTO playlist VALUES (2, 4);

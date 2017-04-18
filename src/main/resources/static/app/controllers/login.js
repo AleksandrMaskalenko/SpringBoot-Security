@@ -19,7 +19,7 @@ angular.module('myApp')
 				$http.defaults.headers.common['Authorization'] = 'Basic ' + base64Credential;
 				AuthService.user = res;
 				$rootScope.$broadcast('LoginSuccessful');
-				$state.go('address');
+				$state.go('home');
 			} else {
 				$scope.message = 'Authetication Failed !';
 			}

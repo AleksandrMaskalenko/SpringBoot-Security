@@ -4,8 +4,8 @@
 
     <div>
 
-        <table class="table table-hover" >
-            <thead>
+        <table class="table" >
+            <thead class="thead-default">
             <tr>
                 <th>Name</th>
                 <th>Author</th>
@@ -21,8 +21,8 @@
                 <td><a data-ui-sref="details" data-ng-click="songDetails(song)">{{song.name}}</a></td>
                 <td>{{song.author}}</td>
                 <td>{{song.duration}}</td>
-                <td><button data-ng-click="" class="btn btn-default">Play</button></td>
-                <td><button data-ng-click="deleteSongFromPlaylist(song)" class="btn btn-default">delete from playlist</button></td>
+                <td><button data-ng-click="" class="btn btn-secondary">Play</button></td>
+                <td><button data-ng-click="deleteSongFromPlaylist(song)" class="btn btn-secondary">delete from playlist</button></td>
 
             </tr>
             </tbody>

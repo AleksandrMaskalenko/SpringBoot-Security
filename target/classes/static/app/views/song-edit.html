@@ -4,14 +4,15 @@
 
     <div >
 
-        <table class="table table-bordred table-striped">
-            <thead>
+        <table class="table">
+            <thead class="thead-default">
             <tr>
 
                 <th>Name</th>
                 <th>Author</th>
                 <th>Duration</th>
                 <th>Date</th>
+                <th>Album</th>
 
             </tr>
             </thead>
@@ -23,6 +24,7 @@
                 <td><input type="text" data-ng-model="author"/></td>
                 <td><input type="text" data-ng-model="duration"/></td>
                 <td><input type="text" data-ng-model="date"/></td>
+                <td><input type="text" data-ng-model="album"/></td>
 
             </tr>
             </tbody>
@@ -30,9 +32,9 @@
         </table>
     </div>
 
-    <div class="pull-right">
-        <button data-ng-click="updateSong()" class="btn btn-default">Update song</button>
-        <a data-ng-click="loadData()" data-ui-sref="address" class="btn btn-default" role="button">Back</a>
+    <div class="float-right">
+        <button data-ng-click="updateSong()" class="btn btn-secondary">Update song</button>
+        <a data-ui-sref="home" class="btn btn-secondary" role="button">Back</a>
     </div>
 
 

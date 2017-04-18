@@ -79,4 +79,10 @@ public class SongController {
     public void deleteSongFromPlaylist(@PathVariable int id) {
         songService.deleteSongFromPlaylist(id);
     }
+
+    @RequestMapping("/find/{name}")
+    public List<Song> findSongsByName(@PathVariable String name) {
+        return songService.findSongByName(name);
+    }
 }
+

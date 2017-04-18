@@ -6,7 +6,7 @@ angular.module('myApp')
 
     $scope.loadData = function () {
         $http.get('http://localhost:8080/songs').then(function (response) {
-            $scope.songs = response.data;
+            $rootScope.songs = response.data;
         });
 
     };
@@ -52,12 +52,14 @@ angular.module('myApp')
         $rootScope.authorScope = song.author;
         $rootScope.durationScope = song.duration;
         $rootScope.dateScope = song.date;
+        $rootScope.album = song.album;
     };
 
     $scope.name = $rootScope.nameScope;
     $scope.author = $rootScope.authorScope;
     $scope.duration = $rootScope.durationScope;
     $scope.date = $rootScope.dateScope;
+    $scope.album = $rootScope.album;
 
 
     $scope.updateSong = function () {
@@ -67,7 +69,8 @@ angular.module('myApp')
             name: $scope.name,
             author: $scope.author,
             duration: $scope.duration,
-            date: $scope.date
+            date: $scope.date,
+            album: $scope.album
         };
 
         $http.post('http://localhost:8080/song/add', songObjUpd);
@@ -78,5 +81,4 @@ angular.module('myApp')
 
         $http.post('http://localhost:8080/playlist/add/' + song.id);
     };
-
 });

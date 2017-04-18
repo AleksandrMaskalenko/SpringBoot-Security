@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-sm-6 ">
-		<div class="panel panel-default">
-			<div class="panel-heading">User</div>
-			<div class="panel-body">
+		<div class="card">
+			<div class="card-header">User</div>
+			<div class="card-block">
 				<div class="col-md-12">
 					<form data-ng-submit="submit()" name="userForm" novalidate>
 
@@ -36,7 +36,7 @@
 								required class="form-control" id="pwd"
 																	  data-ng-model="user.password" name="password">
 						</div>
-						<button type="submit" class="btn btn-default"
+						<button type="submit" class="btn btn-secondary"
 								data-ng-disabled="userForm.$invalid">{{buttonText}}</button>
 
 						<div class="alert alert-info margin-top-5" data-ng-show="message">{{message}}</div>
@@ -46,15 +46,12 @@
 		</div>
 	</div>
 	<div class="col-sm-6">
-		<div class="panel panel-default">
-			<div class="panel-heading">
+		<div class="card">
+			<div class="card-header">
 				Users
-				<!--<button type="button" class="btn btn-default btn-sm"-->
-						<!--data-ng-click="initAddUser()">-->
-					<!--<span class="glyphicon glyphicon-plus"></span> New User-->
-				<!--</button>-->
+
 			</div>
-			<div class="panel-body">
+			<div class="card-block">
 
 				<div class="alert alert-info margin-top-5" data-ng-show="deleteMessage">{{deleteMessage}}</div>
 				<table class="table table-bordered">

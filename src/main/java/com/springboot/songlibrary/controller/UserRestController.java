@@ -28,7 +28,6 @@ public class UserRestController {
 		return userDao.findAll();
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> userById(@PathVariable Long id) {
 		User user = userDao.findOne(id);
@@ -55,7 +54,6 @@ public class UserRestController {
 
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/users", method = RequestMethod.POST)
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		if (userDao.findOneByUsername(user.getUsername()) != null) {
@@ -64,7 +62,6 @@ public class UserRestController {
 		return new ResponseEntity<User>(userDao.save(user), HttpStatus.CREATED);
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/users", method = RequestMethod.PUT)
 	public User updateUser(@RequestBody User user) {
 		if (userDao.findOneByUsername(user.getUsername()) != null
