@@ -15,9 +15,8 @@ import static org.hibernate.hql.internal.antlr.HqlSqlTokenTypes.SELECT;
 
 @Repository
 public interface SongDao extends JpaRepository<Song, Integer> {
-    List<Song> findAllBy(int userId);
 
-    @Query("SELECT s FROM Song s WHERE s.name LIKE CONCAT('%',:name,'%')")
+    @Query("SELECT s FROM Song s WHERE s.author LIKE CONCAT('%',:name,'%') OR s.name LIKE CONCAT('%',:name,'%')")
     List<Song> findSongsByName(@Param("name") String name);
 
 

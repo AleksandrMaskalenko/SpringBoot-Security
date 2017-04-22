@@ -5,7 +5,7 @@ CREATE TABLE song (
   duration VARCHAR(255) NOT NULL,
   date VARCHAR(255) NOT NULL,
   album VARCHAR(255) NOT NULL,
-  image LONGBLOB
+  content LONGBLOB
 )
   ENGINE = InnoDB;
 

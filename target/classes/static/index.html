@@ -7,36 +7,37 @@
 
 	<title>Song library</title>
 
-	<link type="text/css" href="app/resource/css/style.css" rel="stylesheet">
-	<link type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="app/resource/css/style.css" rel="stylesheet">
 
-	<script type="text/javascript" src="app/resource/js/jquery.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="app/app.js"></script>
-	<script type="text/javascript" src="app/route.js"></script>
-	<script type="text/javascript" src="app/services/auth-service.js"></script>
-	<script type="text/javascript" src="app/controllers/nav.js"></script>
-	<script type="text/javascript" src="app/controllers/login.js"></script>
-	<script type="text/javascript" src="app/controllers/users.js"></script>
-	<script type="text/javascript" src="app/controllers/page-not-found.js"></script>
-	<script type="text/javascript" src="app/controllers/register.js"></script>
-	<script type="text/javascript" src="app/controllers/song-controller.js"></script>
-	<script type="text/javascript" src="app/controllers/playlist.js"></script>
-	<script type="text/javascript" src="app/resource/js/script.js"></script>
+	<script src="app/app.js"></script>
+	<script src="app/route.js"></script>
+	<script src="app/services/auth-service.js"></script>
+	<script src="app/controllers/nav.js"></script>
+	<script src="app/controllers/login.js"></script>
+	<script src="app/controllers/register.js"></script>
+	<script src="app/controllers/users.js"></script>
+	<script src="app/controllers/page-not-found.js"></script>
+	<script src="app/controllers/song-controller.js"></script>
+	<script src="app/controllers/playlist.js"></script>
 
-
+	<!--<link href="dist/main.css" rel="stylesheet">-->
+	<!--<script src ="dist/scripts.js"></script>-->
 </head>
 
 	<body data-ng-app="myApp">
 
-		<div data-ui-view="nav"></div>
+		<div class="fixed-nav-bar" data-ui-view="nav" ></div>
 
 		<div class="container" >
 			<div data-ui-view="content"></div>
 		</div>
 
 	</body>
+
+
 </html>

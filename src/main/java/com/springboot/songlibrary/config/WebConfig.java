@@ -15,7 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class WebConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-    UserService userService;
+    private UserService userService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -32,7 +32,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		http
 
 				.authorizeRequests()
-				.antMatchers("/", "/index.html", "/app/**", "/register", "/favicon.ico").permitAll()
+				.antMatchers("/", "/index.html", "/app/**", "/register", "/favicon.ico", "/upload").permitAll()
 				.anyRequest().fullyAuthenticated().and()
 				.httpBasic().and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

@@ -1,6 +1,6 @@
 angular.module('myApp')
 
-.controller('SongsController', function ($scope, $http, $rootScope, AuthService) {
+.controller('SongsController', function ($scope, $http, $rootScope, AuthService, fileReader) {
 
     $scope.user = AuthService.user;
 
@@ -27,11 +27,14 @@ angular.module('myApp')
         $rootScope.songDuration = song.duration;
         $rootScope.songDate = song.date;
         $rootScope.songAlbum = song.album;
-        $rootScope.songImage = song.image;
+        $rootScope.songConten = song.content;
 
     };
 
+
     $rootScope.addSong = function () {
+
+        document.getElementById("form").submit();
 
         var songObj = {
             name: $scope.nameAdd,

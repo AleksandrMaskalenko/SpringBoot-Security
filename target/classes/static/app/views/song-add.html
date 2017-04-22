@@ -1,6 +1,6 @@
 <div>
 
-<h1 class="text-center">Add song</h1>
+<h1 class="text-center padd">Add song</h1>
 
 <div>
 
@@ -27,12 +27,13 @@
             <th><input type="text" data-ng-model="albumAdd"/></th>
         </tr>
         <tr>
-            <th>Image</th>
+            <th>File(content)</th>
             <th>
-                <form method="POST" action="/upload" enctype="multipart/form-data">
+                <form id="form" target="hiddenFrame" method="post" action="/upload" enctype="multipart/form-data">
                     <input type="file" name="file" class="form-control-file"/>
-                    <input type="submit" value="Upload" />
                 </form>
+                <iframe name='hiddenFrame'  style='display:none'></iframe>
+
             </th>
         </tr>
 

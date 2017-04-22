@@ -3,6 +3,7 @@ package com.springboot.songlibrary.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.List;
 
 
@@ -16,7 +17,7 @@ public class Song {
     private String duration;
     private String date;
     private String album;
-    private byte[] image;
+    private byte[] content;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "songList")
@@ -25,13 +26,13 @@ public class Song {
     public Song() {
     }
 
-    public Song(String name, String author, String duration, String date, String album, byte[] image) {
+    public Song(String name, String author, String duration, String date, String album, byte[] content) {
         this.name = name;
         this.author = author;
         this.duration = duration;
         this.date = date;
         this.album = album;
-        this.image = image;
+        this.content = content;
     }
 
     public int getId() {
@@ -82,14 +83,6 @@ public class Song {
         this.album = album;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
     public List<User> getUserList() {
         return userList;
     }
@@ -97,4 +90,13 @@ public class Song {
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
+
 }
