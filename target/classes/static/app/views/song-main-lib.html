@@ -26,13 +26,16 @@
                 <td><a data-ui-sref="details" data-ng-click="songDetails(song)">{{song.name}}</a></td>
                 <td>{{song.author}}</td>
                 <td>{{song.duration}}</td>
-                <td><button data-ng-click="download(song)" class="btn btn-secondary">download</button></td>
+                <td>
+                    <button data-ng-click="download(song)" class="btn btn-secondary btn-sm">download</button>
+                    <form id="download" method="GET" action="/downloadSong"></form>
+                </td>
 
-                <td data-ng-show="user.principal.role =='ADMIN'"><a data-ui-sref="edit" data-ng-click="editSong(song)" class="btn btn-info" role="button">edit</a></td>
+                <td data-ng-show="user.principal.role =='ADMIN'"><a data-ui-sref="edit" data-ng-click="editSong(song)" class="btn btn-info btn-sm" role="button">edit</a></td>
 
-                <td data-ng-show="user.principal.role =='ADMIN'"><button data-ng-click="deleteSong(song)" class="btn btn-danger">delete</button></td>
+                <td data-ng-show="user.principal.role =='ADMIN'"><button data-ng-click="deleteSong(song)" class="btn btn-danger btn-sm">delete</button></td>
 
-                <td><button data-ng-click="addSongPlaylist(song)" class="btn btn-secondary">Add song to playlist</button></td>
+                <td><button data-ng-click="addSongPlaylist(song)" class="btn btn-secondary btn-sm">Add to playlist</button></td>
 
             </tr>
             </tbody>

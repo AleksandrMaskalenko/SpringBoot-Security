@@ -2,7 +2,12 @@ package com.springboot.songlibrary.controller;
 
 import com.springboot.songlibrary.service.SongService;
 import com.springboot.songlibrary.model.Song;
+import org.apache.tomcat.util.codec.binary.Base64;
+import org.apache.tomcat.util.codec.binary.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
@@ -12,6 +17,8 @@ import java.util.List;
 public class SongController {
 
     private byte[] bytes;
+
+    private Song downloadSong;
 
     @Autowired
     private SongService songService;
@@ -32,6 +39,8 @@ public class SongController {
         song.setContent(bytes);
 
         songService.addSong(song);
+
+        bytes = null;
     }
 
     @RequestMapping(value = "/song/update", method = RequestMethod.POST)
@@ -45,21 +54,28 @@ public class SongController {
         songService.deleteSong(id);
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-    public void updateSong(@RequestBody Song song, @PathVariable int id) {
-        songService.updateSong(song, id);
+    @RequestMapping(value = "/download/song/{id}", method = RequestMethod.POST)
+    public void findSongForDownload(@PathVariable int id) throws IOException {
+        downloadSong = songService.getSong(id);
+
+    }
+
+    @RequestMapping(value = "/downloadSong")
+    public HttpEntity<byte[]> downloadSong() throws IOException {
+
+        byte[] fileByte = downloadSong.getContent();
+
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType("audio", "mpeg3"));
+        header.set("Content-Disposition", "attachment; filename=" + downloadSong.getName() + ".mp3");
+        header.setContentLength(fileByte.length);
+
+        return new HttpEntity<byte[]>(fileByte, header);
     }
 
     @PostMapping("/upload")
-    public String singleFileUpload(@RequestParam("file") MultipartFile file) {
-        try {
+    public void singleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
             bytes = file.getBytes();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return "Song upload successful!";
     }
 
     @RequestMapping("/playlist/{id}")
@@ -81,5 +97,16 @@ public class SongController {
     public List<Song> findSongsByName(@PathVariable String name) {
         return songService.findSongByName(name);
     }
-}
 
+//    @RequestMapping("/play")
+//    public String playSong() {
+//        Song song = songService.getSong(3);
+//        byte[] fileByte = song.getContent();
+//
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("data:audio/mp3;base64,");
+//        sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(fileByte, false)));
+//
+//        return sb.toString();
+//    }
+}

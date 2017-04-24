@@ -32,7 +32,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		http
 
 				.authorizeRequests()
-				.antMatchers("/", "/index.html", "/app/**", "/register", "/favicon.ico", "/upload").permitAll()
+				.antMatchers("/", "/index.html", "/app/**", "/register", "/favicon.ico", "/upload", "/downloadSong").permitAll()
 				.anyRequest().fullyAuthenticated().and()
 				.httpBasic().and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

@@ -9,28 +9,28 @@ angular.module('myApp')
 			
 			$scope.userForm.$setPristine();
 			$scope.message='';
-			$scope.appUser = null;
+			$scope.user = null;
 			$scope.buttonText = 'Create';
 			
 		}).error(function(error) {
 			$scope.message = error.message;
 		});
 	};
-	$scope.initEdit = function(appUser) {
+	$scope.initEdit = function(user) {
 		edit = true;
-		$scope.appUser = appUser;
+		$scope.user = user;
 		$scope.message='';
 		$scope.buttonText = 'Update';
 	};
 	$scope.initAddUser = function() {
 		edit = false;
-		$scope.appUser = null;
+		$scope.user = null;
 		$scope.userForm.$setPristine();
 		$scope.message='';
 		$scope.buttonText = 'Create';
 	};
-	$scope.deleteUser = function(appUser) {
-		$http.delete('api/users/'+appUser.id).success(function(res) {
+	$scope.deleteUser = function(user) {
+		$http.delete('api/users/'+user.id).success(function(res) {
 			$scope.deleteMessage ="Success!";
 			init();
 		}).error(function(error) {
@@ -38,8 +38,8 @@ angular.module('myApp')
 		});
 	};
 	var editUser = function(){
-		$http.put('api/users', $scope.appUser).success(function(res) {
-			$scope.appUser = null;
+		$http.put('api/users', $scope.user).success(function(res) {
+			$scope.user = null;
 			$scope.confirmPassword = null;
 			$scope.userForm.$setPristine();
 			$scope.message = "Editting Success";
@@ -49,8 +49,8 @@ angular.module('myApp')
 		});
 	};
 	var addUser = function(){
-		$http.post('api/users', $scope.appUser).success(function(res) {
-			$scope.appUser = null;
+		$http.post('api/users', $scope.user).success(function(res) {
+			$scope.user = null;
 			$scope.confirmPassword = null;
 			$scope.userForm.$setPristine();
 			$scope.message = "User Created";

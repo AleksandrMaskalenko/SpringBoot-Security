@@ -15,7 +15,11 @@ angular.module('myApp')
             $http.delete('http://localhost:8080/playlist/delete/' + song.id).then($scope.songs.splice(idx, 1));
         };
 
-
+        // $scope.playSong = function () {
+        //     $http.get('http://localhost:8080/play').then(function (responce) {
+        //         $scope.songPlay = responce.data;
+        //     });
+        // };
 
 
 });

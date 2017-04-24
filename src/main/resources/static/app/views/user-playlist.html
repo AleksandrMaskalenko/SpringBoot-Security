@@ -2,8 +2,6 @@
 
     <h1 class="text-center padd">Your playlist</h1>
 
-    <div>
-
         <table class="table" >
             <thead class="thead-default">
             <tr>
@@ -21,14 +19,16 @@
                 <td><a data-ui-sref="details" data-ng-click="songDetails(song)">{{song.name}}</a></td>
                 <td>{{song.author}}</td>
                 <td>{{song.duration}}</td>
-                <td><button data-ng-click="" class="btn btn-secondary">Play</button></td>
-                <td><button data-ng-click="deleteSongFromPlaylist(song)" class="btn btn-secondary">delete from playlist</button></td>
+                <td>
+                    <audio controls>
+                        <source src="" type="audio/mpeg">
+                    </audio>
+                </td>
+                <td><button data-ng-click="deleteSongFromPlaylist(song)" class="btn btn-secondary btn-sm">delete from playlist</button></td>
 
             </tr>
             </tbody>
 
         </table>
-
-    </div>
 
 </div>

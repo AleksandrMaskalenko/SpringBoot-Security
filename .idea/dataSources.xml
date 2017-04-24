@@ -13,6 +13,9 @@
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
+        <property name="blobSendChunkSize" value="15000000" />
+        <property name="locatorFetchBufferSize" value="15000000" />
+        <property name="maxQuerySizeToLog" value="20480" />
       </driver-properties>
     </data-source>
   </component>

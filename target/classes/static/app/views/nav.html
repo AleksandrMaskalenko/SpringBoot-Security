@@ -22,12 +22,12 @@
 			</ul>
 
 			<div class="col-lg-5" data-ng-show="user.principal.name">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search" data-ng-model="find">
+				<form class="input-group" data-ng-keyup="$event.keyCode == 13 && findSong()">
+					<input type="text" class="form-control" placeholder="Search" data-ng-model="find" onkeypress="handle(event)">
 					<span class="input-group-btn">
             			<a class="btn btn-secondary" type="button" data-ng-click="findSong()">Go!</a>
         			</span>
-				</div>
+				</form>
 			</div>
 
 			<ul class="navbar-nav mr-right">

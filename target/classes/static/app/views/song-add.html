@@ -30,7 +30,9 @@
             <th>File(content)</th>
             <th>
                 <form id="form" target="hiddenFrame" method="post" action="/upload" enctype="multipart/form-data">
-                    <input type="file" name="file" class="form-control-file"/>
+                    <input type="file" name="file" class="form-control-file" aria-describedby="fileHelp"/>
+                    <small id="fileHelp" class="form-text text-muted">File size < 15mb</small>
+                    <button type="submit" class="btn btn-primary btn-sm">Upload file</button>
                 </form>
                 <iframe name='hiddenFrame'  style='display:none'></iframe>
 

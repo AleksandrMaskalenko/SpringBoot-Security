@@ -27,7 +27,6 @@ angular.module('myApp')
         $rootScope.songDuration = song.duration;
         $rootScope.songDate = song.date;
         $rootScope.songAlbum = song.album;
-        $rootScope.songConten = song.content;
 
     };
 
@@ -45,7 +44,6 @@ angular.module('myApp')
         };
 
         $http.post('http://localhost:8080/song/add', songObj);
-
     };
 
     $scope.editSong = function (song) {
@@ -84,4 +82,13 @@ angular.module('myApp')
 
         $http.post('http://localhost:8080/playlist/add/' + song.id);
     };
+
+    $scope.download = function (song) {
+
+        $http.post('http://localhost:8080/download/song/' + song.id).then(function () {
+            document.getElementById("download").submit();
+        });
+
+    };
+
 });
