@@ -10,14 +10,20 @@ import java.util.List;
 @Entity
 public class Song {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    private String author;
     private String duration;
     private String date;
     private String album;
-    private byte[] content;
+
+    @OneToOne
+    @JoinColumn(name = "content_id")
+    private Content content;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "songList")
@@ -26,7 +32,7 @@ public class Song {
     public Song() {
     }
 
-    public Song(String name, String author, String duration, String date, String album, byte[] content) {
+    public Song(String name, Author author, String duration, String date, String album, Content content) {
         this.name = name;
         this.author = author;
         this.duration = duration;
@@ -51,11 +57,11 @@ public class Song {
         this.name = name;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -91,11 +97,11 @@ public class Song {
         this.userList = userList;
     }
 
-    public byte[] getContent() {
+    public Content getContent() {
         return content;
     }
 
-    public void setContent(byte[] content) {
+    public void setContent(Content content) {
         this.content = content;
     }
 

@@ -4,6 +4,8 @@
         <a data-ui-sref="new-song" class="btn btn-warning" role="button" data-ng-show="user.principal.role =='ADMIN'">+ Add new song</a>
     </div>
 
+    <div class="alert alert-info margin-top-5 col-sm-3 message" data-ng-show="message">{{message}}</div>
+
 
     <div>
 
@@ -24,10 +26,10 @@
             <tr data-ng-repeat="song in songs" >
 
                 <td><a data-ui-sref="details" data-ng-click="songDetails(song)">{{song.name}}</a></td>
-                <td>{{song.author}}</td>
+                <td>{{song.author.name}}</td>
                 <td>{{song.duration}}</td>
                 <td>
-                    <button data-ng-click="download(song)" class="btn btn-secondary btn-sm">download</button>
+                    <button data-ng-click="downloadSong(song)" class="btn btn-secondary btn-sm">download</button>
                     <form id="download" method="GET" action="/downloadSong"></form>
                 </td>
 

@@ -1,7 +1,9 @@
 package com.springboot.songlibrary.service;
 
+import com.springboot.songlibrary.DAO.PlaylistDao;
 import com.springboot.songlibrary.DAO.UserDao;
 import com.springboot.songlibrary.DAO.SongDao;
+import com.springboot.songlibrary.model.Playlist;
 import com.springboot.songlibrary.model.User;
 import com.springboot.songlibrary.model.Song;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,12 @@ public class SongService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private PlaylistDao playlistDao;
+
+    private List<Song> songs;
+    private User user;
+
     public List<Song> listSong() {
         return songDao.findAll();
     }
@@ -33,11 +41,11 @@ public class SongService {
     }
 
     public void deleteSong(int id) {
-        songDao.delete(id);
-    }
+        if (playlistDao.findOne(id) != null) {
+            playlistDao.delete(id);
+        }
 
-    public void updateSong(Song song, int id) {
-        songDao.save(song);
+        songDao.delete(id);
     }
 
     public List<Song> playlist(Long userId) {
@@ -50,40 +58,45 @@ public class SongService {
         return songs;
     }
 
-    public void addSongPlaylist(int id) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String loggedUsername = auth.getName();
-        User user = userDao.findOneByUsername(loggedUsername);
+    public void addSongPlaylist(int id) throws Exception {
+        authentication();
 
-        List<Song> songs = new ArrayList<>();
+        for (Song song: songs) {
+            if (song.getId() == id) {
 
-        songs.addAll(user.getSongList());
-
+                throw new RuntimeException("This song already in a playlist");
+            }
+        }
         songs.add(songDao.findOne(id));
 
-        user.setSongList(songs);
-
-        userDao.save(user);
+        saveUser();
     }
 
     public void deleteSongFromPlaylist(int id) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String loggedUsername = auth.getName();
-        User user = userDao.findOneByUsername(loggedUsername);
-
-        List<Song> songs = new ArrayList<>();
+        authentication();
 
         songs.addAll(user.getSongList());
 
         songs.removeIf(s -> s.getId() == id);
 
-        user.setSongList(songs);
-
-        userDao.save(user);
+        saveUser();
     }
 
     public List<Song> findSongByName(String name) {
         return songDao.findSongsByName(name);
+    }
+
+    private void authentication() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String loggedUsername = auth.getName();
+        user = userDao.findOneByUsername(loggedUsername);
+        songs = new ArrayList<>();
+        songs.addAll(user.getSongList());
+    }
+
+    private void saveUser() {
+        user.setSongList(songs);
+        userDao.save(user);
     }
 
 }

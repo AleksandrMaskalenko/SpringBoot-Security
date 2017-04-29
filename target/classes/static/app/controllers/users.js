@@ -42,10 +42,10 @@ angular.module('myApp')
 			$scope.user = null;
 			$scope.confirmPassword = null;
 			$scope.userForm.$setPristine();
-			$scope.message = "Editting Success";
+			$scope.message = "Editing Success";
 			init();
 		}).error(function(error) {
-			$scope.message =error.message;
+			$scope.message = error.message;
 		});
 	};
 	var addUser = function(){

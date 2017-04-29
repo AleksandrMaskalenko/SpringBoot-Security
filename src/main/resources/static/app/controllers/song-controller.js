@@ -1,29 +1,41 @@
 angular.module('myApp')
 
-.controller('SongsController', function ($scope, $http, $rootScope, AuthService, fileReader) {
+.controller('SongsController', function ($scope, $http, $rootScope, $timeout, AuthService) {
 
     $scope.user = AuthService.user;
 
-    $scope.loadData = function () {
-        $http.get('http://localhost:8080/songs').then(function (response) {
-            $rootScope.songs = response.data;
-        });
+    $http.get('http://localhost:8080/songs').then(function (response) {
+        $rootScope.songs = response.data;
+    });
 
-    };
+    $http.get('http://localhost:8080/authors').then(function (response) {
+        $rootScope.authors = response.data;
+    });
 
-    $scope.loadData();
+
+    $(document).ready(function() {
+        $.fn.select2.defaults.set("minimumResultsForSearch","Infinity");
+        $(".select--filter").select2({
+            minimumResultsForSearch: 2
+        }).on('change',function(){$('.select--filter--value').text($(".select--filter").val());});
+        $(".select--no-filter").select2();
+    }).on('change',function(){$('.select--no-filter--value').text($(".select--no-filter").val());});
+
 
     $scope.deleteSong = function (song) {
         var idx = $scope.songs.indexOf(song);
-        $http.delete('http://localhost:8080/delete/' + song.id).then($scope.songs.splice(idx, 1));
-
+        $http.delete('http://localhost:8080/delete/' + song.id).success(function () {
+            $scope.songs.splice(idx, 1);
+            $scope.message = "Song deleted successfully!";
+            $timeout(function(){$scope.message = '';}, 3000);
+        });
     };
 
     $scope.songDetails = function (song) {
 
         $rootScope.songId = song.id;
         $rootScope.songName = song.name;
-        $rootScope.songAuthor = song.author;
+        $rootScope.songAuthor = song.author.name;
         $rootScope.songDuration = song.duration;
         $rootScope.songDate = song.date;
         $rootScope.songAlbum = song.album;
@@ -31,59 +43,34 @@ angular.module('myApp')
     };
 
 
-    $rootScope.addSong = function () {
-
-        document.getElementById("form").submit();
-
-        var songObj = {
-            name: $scope.nameAdd,
-            author: $scope.authorAdd,
-            duration: $scope.durationAdd,
-            date: $scope.dateAdd,
-            album: $scope.albumAdd
-        };
-
-        $http.post('http://localhost:8080/song/add', songObj);
-    };
-
     $scope.editSong = function (song) {
 
         $rootScope.idScope = song.id;
         $rootScope.nameScope = song.name;
         $rootScope.authorScope = song.author;
+        $rootScope.authorid = song.author.id;
         $rootScope.durationScope = song.duration;
         $rootScope.dateScope = song.date;
-        $rootScope.album = song.album;
+        $rootScope.albumScope = song.album;
+        $rootScope.contentScope = song.content;
     };
 
-    $scope.name = $rootScope.nameScope;
-    $scope.author = $rootScope.authorScope;
-    $scope.duration = $rootScope.durationScope;
-    $scope.date = $rootScope.dateScope;
-    $scope.album = $rootScope.album;
-
-
-    $scope.updateSong = function () {
-
-        var songObjUpd = {
-            id: $scope.id = $rootScope.idScope,
-            name: $scope.name,
-            author: $scope.author,
-            duration: $scope.duration,
-            date: $scope.date,
-            album: $scope.album
-        };
-
-        $http.post('http://localhost:8080/song/add', songObjUpd);
-
-    };
 
     $scope.addSongPlaylist = function (song) {
 
-        $http.post('http://localhost:8080/playlist/add/' + song.id);
+        $http.post('http://localhost:8080/playlist/add/' + song.id)
+            .success(function () {
+            $scope.message = "Song added successfully!";
+            $timeout(function(){$scope.message = '';}, 3000);
+        })
+            .error(function () {
+            $scope.message = "This song already in a playlist!";
+            $timeout(function(){$scope.message = '';}, 3000);
+        });
+
     };
 
-    $scope.download = function (song) {
+    $scope.downloadSong = function (song) {
 
         $http.post('http://localhost:8080/download/song/' + song.id).then(function () {
             document.getElementById("download").submit();

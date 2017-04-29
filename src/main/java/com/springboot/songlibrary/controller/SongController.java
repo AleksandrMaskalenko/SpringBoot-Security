@@ -1,13 +1,11 @@
 package com.springboot.songlibrary.controller;
 
+import com.springboot.songlibrary.model.Content;
+import com.springboot.songlibrary.service.ContentService;
 import com.springboot.songlibrary.service.SongService;
 import com.springboot.songlibrary.model.Song;
-import org.apache.tomcat.util.codec.binary.Base64;
-import org.apache.tomcat.util.codec.binary.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
@@ -19,6 +17,9 @@ public class SongController {
     private byte[] bytes;
 
     private Song downloadSong;
+
+    @Autowired
+    private ContentService contentService;
 
     @Autowired
     private SongService songService;
@@ -36,11 +37,13 @@ public class SongController {
     @RequestMapping(value = "/song/add", method = RequestMethod.POST)
     public void addSong(@RequestBody Song song) {
 
-        song.setContent(bytes);
+        Content content = new Content(bytes);
+        contentService.saveContent(content);
+
+        song.setContent(content);
 
         songService.addSong(song);
 
-        bytes = null;
     }
 
     @RequestMapping(value = "/song/update", method = RequestMethod.POST)
@@ -54,28 +57,29 @@ public class SongController {
         songService.deleteSong(id);
     }
 
-    @RequestMapping(value = "/download/song/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/download/song/{id}", method = RequestMethod.POST) //from angularJS
     public void findSongForDownload(@PathVariable int id) throws IOException {
-        downloadSong = songService.getSong(id);
 
+        downloadSong = songService.getSong(id);
     }
 
-    @RequestMapping(value = "/downloadSong")
+    @RequestMapping(value = "/downloadSong")  //from html
     public HttpEntity<byte[]> downloadSong() throws IOException {
 
-        byte[] fileByte = downloadSong.getContent();
+        byte[] fileByte = downloadSong.getContent().getBytes();
 
         HttpHeaders header = new HttpHeaders();
         header.setContentType(new MediaType("audio", "mpeg3"));
-        header.set("Content-Disposition", "attachment; filename=" + downloadSong.getName() + ".mp3");
+        header.set("Content-Disposition", "attachment; filename=" + downloadSong.getAuthor().getName() + " - " + downloadSong.getName() + ".mp3");
         header.setContentLength(fileByte.length);
 
         return new HttpEntity<byte[]>(fileByte, header);
     }
 
-    @PostMapping("/upload")
+    @PostMapping("/upload")   //from html
     public void singleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
-            bytes = file.getBytes();
+        bytes = file.getBytes();
+
     }
 
     @RequestMapping("/playlist/{id}")
@@ -84,8 +88,16 @@ public class SongController {
     }
 
     @RequestMapping(value = "/playlist/add/{id}", method = RequestMethod.POST)
-    public void addSongPlaylist(@PathVariable int id) {
-        songService.addSongPlaylist(id);
+    public ResponseEntity addSongPlaylist(@PathVariable int id) {
+        try {
+            songService.addSongPlaylist(id);
+
+        } catch (Exception e) {
+
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/playlist/delete/{id}", method = RequestMethod.DELETE)

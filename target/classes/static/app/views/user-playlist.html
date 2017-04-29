@@ -17,7 +17,7 @@
             <tr data-ng-repeat="song in songs">
 
                 <td><a data-ui-sref="details" data-ng-click="songDetails(song)">{{song.name}}</a></td>
-                <td>{{song.author}}</td>
+                <td>{{song.author.name}}</td>
                 <td>{{song.duration}}</td>
                 <td>
                     <audio controls>

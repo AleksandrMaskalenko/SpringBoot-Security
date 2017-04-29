@@ -72,7 +72,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
         views : {
             'content@' : {
                 templateUrl : 'app/views/song-add.html',
-                controller : 'SongsController'
+                controller : 'AddSongsController'
             }
         }
     }).state('edit', {
@@ -81,7 +81,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
         views : {
             'content@' : {
                 templateUrl : 'app/views/song-edit.html',
-                controller : 'SongsController'
+                controller : 'EditSongsController'
             }
         }
     }).state('playlist', {

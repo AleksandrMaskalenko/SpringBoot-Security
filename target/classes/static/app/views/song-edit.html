@@ -1,8 +1,9 @@
 <div>
 
+    <div class="alert alert-info margin-top-5 col-sm-3 message" data-ng-show="message">{{message}}</div>
+
     <h1 class="text-center padd">Song Edit</h1>
 
-    <div >
 
         <table class="table">
             <thead class="thead-default">
@@ -21,16 +22,38 @@
             <tr>
 
                 <td><input type="text" data-ng-model="name"/></td>
-                <td><input type="text" data-ng-model="author"/></td>
+                <td>
+                    <select required class="select select--filter form-control" id="state-list-filter">
+                        <option data-ng-repeat="song in songs" data-ng-model="song.author" id="author" name="author" >{{song.author.name}}</option>
+                    </select>
+
+                    <button type="button" class="btn btn-info btn-sm" data-ng-click="editAuthor()">edit name author</button>
+                </td>
+
                 <td><input type="text" data-ng-model="duration"/></td>
                 <td><input type="text" data-ng-model="date"/></td>
                 <td><input type="text" data-ng-model="album"/></td>
 
             </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div data-ng-show="editAuthorName">
+                        <form id="authorEdit">
+                            <input type="text" data-ng-model="authorName">
+                            <button class="btn btn-secondary btn-sm" data-ng-click="edit()" form="authorEdit">edit</button>
+                        </form>
+                    </div>
+
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
             </tbody>
 
         </table>
-    </div>
+
 
     <div class="float-right">
         <button data-ng-click="updateSong()" class="btn btn-secondary">Update song</button>
