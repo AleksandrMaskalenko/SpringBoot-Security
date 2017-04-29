@@ -13,14 +13,14 @@ CREATE TABLE content (
 CREATE TABLE song (
   id   INT              NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255)     NOT NULL,
-  author_id INT         NOT NULL,
+  author INT         NOT NULL,
   duration VARCHAR(255) NOT NULL,
   date VARCHAR(255)     NOT NULL,
   album VARCHAR(255)    NOT NULL,
   content_id INT        UNIQUE,
 
   FOREIGN KEY (content_id) REFERENCES content(id),
-  FOREIGN KEY (author_id)  REFERENCES author(id)
+  FOREIGN KEY (author)  REFERENCES author(id)
 )
   ENGINE = InnoDB;
 
@@ -52,25 +52,25 @@ INSERT INTO author VALUES (3, 'Bruno Mars');
 INSERT INTO author VALUES (4, 'AJR');
 INSERT INTO author VALUES (5, 'Skrillex');
 
-INSERT INTO song(id,name,author_id,duration,date,album)
+INSERT INTO song(id,name,author,duration,date,album)
 VALUES (1,'99 Problems',1,'4:18','2003', 'The Black Album');
 
-INSERT INTO song(id,name,author_id,duration,date,album)
+INSERT INTO song(id,name,author,duration,date,album)
 VALUES (2,'Clint Eastwood',2,'4:29','2001', 'Gorillaz');
 
-INSERT INTO song(id,name,author_id,duration,date,album)
+INSERT INTO song(id,name,author,duration,date,album)
 VALUES (3,'That''s What I Like',3,'3:33','2016', '24K Magic');
 
-INSERT INTO song(id,name,author_id,duration,date,album)
+INSERT INTO song(id,name,author,duration,date,album)
 VALUES (4,'I''m Not Famous',4,'3:43','2016', 'What Everyone''s Thinking');
 
-INSERT INTO song(id,name,author_id,duration,date,album)
+INSERT INTO song(id,name,author,duration,date,album)
 VALUES (5,'“El Chapo”',5,'3:40','2015', 'The Documentary 2.5');
 
-INSERT INTO song(id,name,author_id,duration,date,album)
+INSERT INTO song(id,name,author,duration,date,album)
 VALUES (6,'Weak',4,'3:48','2016', 'What Everyone''s Thinking');
 
-INSERT INTO song(id,name,author_id,duration,date,album)
+INSERT INTO song(id,name,author,duration,date,album)
 VALUES (7,'Weak',4,'3:48','2016', 'What Everyone''s Thinking');
 
 

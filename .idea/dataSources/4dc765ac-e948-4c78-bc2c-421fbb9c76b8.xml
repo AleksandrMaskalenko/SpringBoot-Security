@@ -94,14 +94,14 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="36" parent="21" name="album">
-      <Position>6</Position>
+    <column id="36" parent="21" name="name">
+      <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="37" parent="21" name="date">
-      <Position>5</Position>
-      <DataType>varchar(255)|0</DataType>
+    <column id="37" parent="21" name="author">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="38" parent="21" name="duration">
@@ -109,26 +109,26 @@
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="21" name="name">
-      <Position>2</Position>
+    <column id="39" parent="21" name="date">
+      <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="40" parent="21" name="author_id">
-      <Position>3</Position>
-      <DataType>int(11)|0</DataType>
+    <column id="40" parent="21" name="album">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="41" parent="21" name="content_id">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="42" parent="21" name="content_id">
+    <index id="42" parent="21" name="author">
+      <ColNames>author</ColNames>
+    </index>
+    <index id="43" parent="21" name="content_id">
       <ColNames>content_id</ColNames>
       <Unique>1</Unique>
-    </index>
-    <index id="43" parent="21" name="author_id">
-      <ColNames>author_id</ColNames>
     </index>
     <key id="44" parent="21" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
@@ -140,7 +140,7 @@
       <UnderlyingIndexName>content_id</UnderlyingIndexName>
     </key>
     <foreign-key id="46" parent="21" name="song_ibfk_2">
-      <ColNames>author_id</ColNames>
+      <ColNames>author</ColNames>
       <RefSchemaName>songmanager</RefSchemaName>
       <RefTableName>author</RefTableName>
       <RefColNames>id</RefColNames>

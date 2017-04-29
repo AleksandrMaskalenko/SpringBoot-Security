@@ -22,7 +22,7 @@ public class Song {
     private Content content;
 
     @ManyToOne
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "author")
     private Author author;
 
     @JsonIgnore
