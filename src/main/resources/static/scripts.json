@@ -1,9 +1,0 @@
-[
-  "./node_modules/angular/angular.js",
-  "./node_modules/angular-route/angular-route.js",
-  "./node_modules/bootstrap/dist/js/bootstrap.js",
-  "./app/app.js",
-  "./app/route.js",
-  "./app/auth-service.js",
-  "./controllers/**/*.js"
-]
