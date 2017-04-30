@@ -23,15 +23,15 @@
 
                 <td><input type="text" data-ng-model="name"/></td>
                 <td>
-                    <select required class="select select--filter form-control" id="state-list-filter">
-                        <option data-ng-repeat="song in songs" data-ng-model="song.author" id="author" name="author" >{{song.author.name}}</option>
+                    <select required class="select select--filter form-control" id="state-list-filter" data-ng-model="song.author"
+                            data-ng-options="author.name for author in authors" name="author">
                     </select>
 
                     <button type="button" class="btn btn-info btn-sm" data-ng-click="editAuthor()">edit name author</button>
                 </td>
 
-                <td><input type="text" data-ng-model="duration"/></td>
-                <td><input type="text" data-ng-model="date"/></td>
+                <td><input type="text" data-ng-model="duration" id="duration"/></td>
+                <td><input type="text" data-ng-model="date" id="date"/></td>
                 <td><input type="text" data-ng-model="album"/></td>
 
             </tr>

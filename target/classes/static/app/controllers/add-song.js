@@ -11,11 +11,17 @@ angular.module('myApp')
         }).on('change',function(){$('.select--no-filter--value').text($(".select--no-filter").val());});
 
 
+        $('#file').on('change', function() {
+            document.getElementById("form").submit();
+        });
+
+        $('#date').mask("9999");
+        $('#duration').mask("99:99");
 
         $scope.addSong = function () {
 
             if( document.getElementById("file").files.length === 0 ){
-                $scope.messageFile = 'Please select file!';
+                $scope.message = 'Please select file!';
                 $timeout(function(){$scope.messageFile = '';}, 3000);
 
             } else {
@@ -29,6 +35,9 @@ angular.module('myApp')
                     $scope.song.date = '';
                     $scope.song.album = '';
                     $('#file').val('');
+                }).error(function () {
+                    $scope.message = "Oops check form please!";
+                    $timeout(function(){$scope.message = '';}, 3000);
                 });
             }
 
@@ -46,11 +55,11 @@ angular.module('myApp')
                 $timeout(function(){$scope.message = '';}, 3000);
                 $scope.author.name = '';
                 $scope.addAuthor = null;
+                $rootScope.loadAuthors();
             }).error(function () {
                 $scope.message = "Oops check form please!";
+                $timeout(function(){$scope.message = '';}, 3000);
             });
         };
-
-
 
     });

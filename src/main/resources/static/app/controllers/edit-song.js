@@ -4,7 +4,6 @@ angular.module('myApp')
 
         $scope.authorName = $rootScope.authorScope.name;
         $scope.name = $rootScope.nameScope;
-        $scope.author = $rootScope.authorScope;
         $scope.duration = $rootScope.durationScope;
         $scope.date = $rootScope.dateScope;
         $scope.album = $rootScope.albumScope;
@@ -18,6 +17,9 @@ angular.module('myApp')
             $(".select--no-filter").select2();
         }).on('change',function(){$('.select--no-filter--value').text($(".select--no-filter").val());});
 
+        $('#date').mask("9999");
+        $('#duration').mask("99:99");
+
 
         $scope.editAuthor = function () {
             $scope.editAuthorName = true;
@@ -26,7 +28,7 @@ angular.module('myApp')
 
         $scope.edit = function () {
             var authorObjUpd = {
-                id: $scope.autid = $rootScope.authorid,
+                id: $rootScope.authorId,
                 name: $scope.authorName
             };
 

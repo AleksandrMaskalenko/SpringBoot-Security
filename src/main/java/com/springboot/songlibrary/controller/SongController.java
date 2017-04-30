@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import sun.audio.AudioData;
+import sun.audio.AudioDataStream;
+import sun.audio.AudioPlayer;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -78,6 +82,8 @@ public class SongController {
 
     @PostMapping("/upload")   //from html
     public void singleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
+        bytes = null;
+
         bytes = file.getBytes();
 
     }
@@ -110,15 +116,20 @@ public class SongController {
         return songService.findSongByName(name);
     }
 
+//    private AudioDataStream audioStream;
 //    @RequestMapping("/play")
-//    public String playSong() {
-//        Song song = songService.getSong(3);
-//        byte[] fileByte = song.getContent();
+//    public void playSong() {
+//        Song song = songService.getSong(9);
+//        byte[] fileByte = song.getContent().getBytes();
 //
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("data:audio/mp3;base64,");
-//        sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(fileByte, false)));
+//        AudioData audiodata = new AudioData(fileByte);
+//        audioStream = new AudioDataStream(audiodata);
+//        AudioPlayer.player.start(audioStream);
 //
-//        return sb.toString();
+//    }
+//
+//    @RequestMapping("/stop")
+//    public void stopSong() {
+//        AudioPlayer.player.stop(audioStream);
 //    }
 }

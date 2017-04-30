@@ -8,19 +8,14 @@ angular.module('myApp')
         $rootScope.songs = response.data;
     });
 
-    $http.get('http://localhost:8080/authors').then(function (response) {
-        $rootScope.authors = response.data;
-    });
 
+    $rootScope.loadAuthors = function () {
+        $http.get('http://localhost:8080/authors').then(function (response) {
+            $rootScope.authors = response.data;
+        });
+    };
 
-    $(document).ready(function() {
-        $.fn.select2.defaults.set("minimumResultsForSearch","Infinity");
-        $(".select--filter").select2({
-            minimumResultsForSearch: 2
-        }).on('change',function(){$('.select--filter--value').text($(".select--filter").val());});
-        $(".select--no-filter").select2();
-    }).on('change',function(){$('.select--no-filter--value').text($(".select--no-filter").val());});
-
+    $rootScope.loadAuthors();
 
     $scope.deleteSong = function (song) {
         var idx = $scope.songs.indexOf(song);
@@ -48,7 +43,7 @@ angular.module('myApp')
         $rootScope.idScope = song.id;
         $rootScope.nameScope = song.name;
         $rootScope.authorScope = song.author;
-        $rootScope.authorid = song.author.id;
+        $rootScope.authorId = song.author.id;
         $rootScope.durationScope = song.duration;
         $rootScope.dateScope = song.date;
         $rootScope.albumScope = song.album;

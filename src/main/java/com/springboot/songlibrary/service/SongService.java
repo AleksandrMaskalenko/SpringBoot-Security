@@ -75,8 +75,6 @@ public class SongService {
     public void deleteSongFromPlaylist(int id) {
         authentication();
 
-        songs.addAll(user.getSongList());
-
         songs.removeIf(s -> s.getId() == id);
 
         saveUser();
