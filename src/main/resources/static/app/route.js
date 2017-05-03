@@ -5,7 +5,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
 		url : '',
 		views : {
 			'nav@' : {
-				template : 'app/views/nav.html',
+				templateUrl : 'app/views/nav.html',
 				controller : 'NavController'
 			}
 		}
@@ -14,7 +14,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
 		url : '/login',
 		views : {
 			'content@' : {
-				template : 'app/views/login.html',
+				templateUrl : 'app/views/login.html',
 				controller : 'LoginController'
 			}
 		}
@@ -26,7 +26,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
 		},
 		views : {
 			'content@' : {
-				template : 'app/views/users.html',
+				templateUrl : 'app/views/users.html',
 				controller : 'UsersController'
 			}
 		}
@@ -35,7 +35,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
 		url : '/',
 		views : {
 			'content@' : {
-				template : 'app/views/song-main-lib.html',
+				templateUrl : 'app/views/song-main-lib.html',
 				controller : 'SongsController'
 			}
 		}
@@ -44,7 +44,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
 		url : '/page-not-found',
 		views : {
 			'content@' : {
-				template : 'app/views/page-not-found.html',
+				templateUrl : 'app/views/page-not-found.html',
 				controller : 'PageNotFoundController'
 			}
 		}
@@ -53,7 +53,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
 		url : '/register',
 		views : {
 			'content@' : {
-				template : 'app/views/register.html',
+				templateUrl : 'app/views/register.html',
 				controller : 'RegisterController'
 			}
 		}
@@ -62,7 +62,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
         url : '/details',
         views : {
             'content@' : {
-                template : 'app/views/song-details.html',
+                templateUrl : 'app/views/song-details.html',
                 controller : 'SongsController'
             }
         }
@@ -71,7 +71,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
         url : '/new_song',
         views : {
             'content@' : {
-                template : 'app/views/song-add.html',
+                templateUrl : 'app/views/song-add.html',
                 controller : 'AddSongsController'
             }
         }
@@ -80,7 +80,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
         url : '/edit',
         views : {
             'content@' : {
-                template : 'app/views/song-edit.html',
+                templateUrl : 'app/views/song-edit.html',
                 controller : 'EditSongsController'
             }
         }
@@ -89,7 +89,7 @@ angular.module('myApp').config(function($stateProvider, $urlRouterProvider) {
         url : '/playlist',
         views : {
             'content@' : {
-                template : 'app/views/user-playlist.html',
+                templateUrl : 'app/views/user-playlist.html',
                 controller : 'PlaylistController'
             }
         }

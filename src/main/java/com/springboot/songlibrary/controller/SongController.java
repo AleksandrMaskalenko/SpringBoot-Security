@@ -61,7 +61,7 @@ public class SongController {
         songService.deleteSong(id);
     }
 
-    @RequestMapping(value = "/download/song/{id}", method = RequestMethod.POST) //from angularJS
+    @RequestMapping(value = "/download/song/{id}", method = RequestMethod.POST)
     public void findSongForDownload(@PathVariable int id) throws IOException {
 
         downloadSong = songService.getSong(id);

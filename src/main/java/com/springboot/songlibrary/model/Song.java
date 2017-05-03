@@ -1,9 +1,7 @@
 package com.springboot.songlibrary.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.io.File;
 import java.util.List;
 
 
@@ -21,8 +19,8 @@ public class Song {
     @JoinColumn(name = "content_id")
     private Content content;
 
-    @ManyToOne
-    @JoinColumn(name = "author")
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "author_id")
     private Author author;
 
     @JsonIgnore

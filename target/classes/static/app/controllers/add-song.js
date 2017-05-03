@@ -22,7 +22,7 @@ angular.module('myApp')
 
             if( document.getElementById("file").files.length === 0 ){
                 $scope.message = 'Please select file!';
-                $timeout(function(){$scope.messageFile = '';}, 3000);
+                $timeout(function(){$scope.message = '';}, 3000);
 
             } else {
 

@@ -3,7 +3,6 @@ package com.springboot.songlibrary.service;
 import com.springboot.songlibrary.DAO.PlaylistDao;
 import com.springboot.songlibrary.DAO.UserDao;
 import com.springboot.songlibrary.DAO.SongDao;
-import com.springboot.songlibrary.model.Playlist;
 import com.springboot.songlibrary.model.User;
 import com.springboot.songlibrary.model.Song;
 import org.springframework.beans.factory.annotation.Autowired;
