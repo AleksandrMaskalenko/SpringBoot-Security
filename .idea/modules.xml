@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/songlibrari-crud-security.iml" filepath="$PROJECT_DIR$/songlibrari-crud-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/songlib.iml" filepath="$PROJECT_DIR$/songlib.iml" />
     </modules>
   </component>
 </project>

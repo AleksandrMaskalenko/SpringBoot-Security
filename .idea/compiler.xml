@@ -6,13 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="addressbook" />
-        <module name="songlibrari-crud-security" />
+        <module name="songlib" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="addressbook" target="1.8" />
-      <module name="songlibrari-crud-security" target="1.8" />
+      <module name="songlib" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
